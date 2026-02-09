@@ -6,22 +6,22 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 22:14:05 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/06 22:39:18 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/09 20:52:50 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(stack **stk)
+void    rotate(stack **stk)
 {
-	stack	*last_node;
+    stack    *last_node;
 
-	last_node = ft_find_last_node(stk);
-	last_node->next = (*stk);
-	(*stk)->prev = last_node;
-	*stk = (*stk)->next;
-	(*stk)->next = NULL;
-	last_node->prev = NULL;
+    last_node = ft_find_last_node(stk);
+    last_node->next = (*stk);
+    (*stk)->prev = last_node;
+    *stk = (*stk)->next;
+    (*stk)->prev = NULL;
+    last_node->next->next = NULL;
 }
 
 void	ra(stack **a)

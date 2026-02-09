@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 13:33:46 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/07 00:15:17 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/07 03:49:20 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,15 @@ char **ft_split(char *numstr, char separator)
 	i = 0;
 	nbrcount = ft_numcount(numstr, separator);
 	nums = malloc((nbrcount + 2) * (sizeof(char *)));
-	nums[i] = ft_substr("./push_swap", 0, 11);
+	nums[0] = ft_substr("./push_swap", 0, 11);
 	if (!nums)
 		return(NULL);
-	while (++i < nbrcount)
+	while (++i <= nbrcount)
 	{
 		while (numstr[j] && numstr[j] == separator)
 			j++;
 		numlen = ft_numlen(&numstr[j], separator);
-		nums[i] = ft_substr(&numstr[j], j, numlen);
+		nums[i] = ft_substr(&numstr[j], 0, numlen);
 		if (!nums[i])
 			return(ft_freemem(nums, i));
 		j = j + numlen;

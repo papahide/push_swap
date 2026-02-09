@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 22:16:46 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/07 00:06:51 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/09 22:14:46 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,48 @@ void	ft_positions(stack **stk)
 	}
 }
 
-void	tiny_sort(stack **a)
-{
-	long	bigger;
-	long	node_count;
+// void	tiny_sort(stack **a)
+// {
+// 	long	bigger;
+// 	long	node_count;
 
-	ft_positions(a);
-	node_count = ft_stack_len(*a);
-	if	(node_count < 3)
-		return ;
-	bigger = ft_find_bigger(a);
-	if (bigger == 0)
-		ra(a);
-	else if (bigger == 1)
-		rra(a);
-	if ((*a)->num > (*a)->next->num)
-		sa(a);
+	
+// 	ft_positions(a);
+// 	node_count = ft_stack_len(*a);
+// 	if	(node_count < 3)
+// 		return ;
+// 	bigger = ft_find_bigger(a);
+// 	if (bigger == 0)
+// 		ra(a);
+// 	else if (bigger == 1)
+// 		rra(a);
+// 	if ((*a)->num > (*a)->next->num)
+// 		sa(a);
+// }
+
+stack	*find_hi(stack *stk)
+{
+	stack	*biggest;
+
+	biggest = stk;
+	while (stk->next != NULL)
+	{
+		if (biggest->num < stk->next->num)
+			biggest = stk;
+		stk = stk->next;
+	}
+	return(biggest);
+}
+
+void	tiny_sort(stack **stk)
+{
+	stack	*bigger;
+
+	bigger = find_hi(*stk);
+	if (*stk == bigger)
+		ra(stk);
+	else if ((*stk)->next == bigger)
+		rra(stk);
+	if ((*stk)->next != NULL && (*stk)->num > (*stk)->next->num)
+		sa(stk);
 }

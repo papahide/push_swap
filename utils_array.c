@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 21:55:19 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/07 00:29:03 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/08 18:07:21 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,14 @@ char	**ft_freemem(char **str, int i)
 
 void	ft_free_arr(char **str)
 {
-	char *temp;
 	int	i;
 
 	i = 0;
 	while (str[i] != NULL)
 	{
-		temp = str[i];
+		free(str[i]);
+		str[i] = NULL;
 		i++;
-		free(temp);
-		temp = NULL;
 	}
 	free(str);
 	str = NULL;
@@ -61,25 +59,21 @@ int	ft_strcmp(char *str, char *cmp)
 long	ft_atol(const char *str)
 {
 	long	lnum;
-	long	to_app;
 	long	sign;
 	int		i;
 
 	i = 0;
 	sign = 1;
 	lnum = 0;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '-')
 	{
-		if (str[i] == '-')
-			sign *= -1;
+		sign *= -1;
 		i++; 
 	}
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
-		to_app = str[i] - '0';
-		lnum = (lnum * 10) + to_app;
+		lnum = (lnum * 10) + (str[i] - '0');
 		i++;
 	}
-	
 	return(lnum * sign);
 }

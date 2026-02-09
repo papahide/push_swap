@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:41:23 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/07 00:29:28 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/08 18:55:28 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ char	**ft_split(char *numstr, char separator);
 
 // Create the a stack
 
-void	ft_create_stack(stack **a, char *argv[], bool split);
-void	ft_new_node(stack **a, int number, int position);
+void	ft_create_stack(stack **stk, char *argv[], bool split);
+void	ft_new_node(stack **stk, int number, int position);
 
 // Operators
 
@@ -79,8 +79,8 @@ void	ft_append_node(stack **stk, stack **new);
 int		ft_strcmp(char *str, char *cmp);
 stack	*ft_find_last_node(stack **stk);
 long	ft_stack_len(stack *stk);
-void	ft_free_sort(stack **a);
-bool	ft_sorted(stack *a);
+void	ft_free_stack(stack *stk);
+bool	ft_sorted(stack *stk);
 char	**ft_freemem(char **str, int i);
 void	ft_free_arr(char **str);
 

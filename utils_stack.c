@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 23:13:31 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/06 23:57:13 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/08 19:03:43 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,29 @@ void	ft_append_node(stack **stk, stack **new)
 	}
 }
 
-bool	ft_sorted(stack *a)
+bool	ft_sorted(stack *stk)
 {
-	if (a == NULL)
+	if (stk == NULL)
 		return(true);
-	while (a->next != NULL)
+	while (stk->next != NULL)
 	{
-		if (a->index > a->next->index)
+		if (stk->num > stk->next->num)
 			return(false);
-		a = a->next;
+		stk = stk->next;
 	}
 	return(true);
 }
 
-void	ft_free_sort(stack **a)
+void	ft_free_stack(stack *stk)
 {
-	stack *tmp;
+	stack	*temp;
 
-	tmp = *a;
-	while ((*a)!= NULL)
+	while (stk != NULL)
 	{
-		tmp = *a;
-		(*a) = (*a)->next;
-		free(tmp);
-		tmp = NULL;
+		temp = stk->next;
+		free(stk);
+		stk = NULL;
+		stk = temp;
 	}
 }
 

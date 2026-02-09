@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 12:24:31 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/06 23:38:29 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/08 18:44:30 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int argc, char *argv[])
 {
 	stack *a;
 	//stack *b;
-	
 
 	a = NULL;
 	//b = NULL;
@@ -24,7 +23,8 @@ int	main(int argc, char *argv[])
 		return(0);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-	ft_create_stack(&a, &argv[1], argc == 2);
+	ft_create_stack(&a, argv, argc == 2);
+	argv = NULL;
 	if (!ft_sorted(a))
 	{
 		if (ft_stack_len(a) == 2)
@@ -34,6 +34,7 @@ int	main(int argc, char *argv[])
 		// else
 		// 	push_swap(&a, &b);
 	}
-	ft_free_sort(&a);
+	ft_free_stack(a);
+	a = NULL;
 	return(0);
 }
