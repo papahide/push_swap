@@ -6,7 +6,7 @@
 #    By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/16 13:47:28 by paapahid          #+#    #+#              #
-#    Updated: 2026/02/07 00:08:02 by paapahid         ###   ########.fr        #
+#    Updated: 2026/02/10 20:31:50 by paapahid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -g -Wall -Wextra -Werror
 
 CC = cc
 
-SRC = main.c \
+SRC = push_swap.c \
 	checkers.c \
 	split.c \
 	create_stack.c \
@@ -25,6 +25,7 @@ SRC = main.c \
 	reverse_rotate.c \
 	push.c \
 	tiny_sort.c \
+	big_sort.c \
 	utils_array.c \
 	utils_stack.c
 

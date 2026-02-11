@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 21:55:19 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/08 18:07:21 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/10 20:01:29 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,12 @@ long	ft_atol(const char *str)
 	i = 0;
 	sign = 1;
 	lnum = 0;
-	if (str[i] == '-')
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		sign *= -1;
+		if (str[i] == '-')
+			sign *= -1;
 		i++; 
 	}
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))

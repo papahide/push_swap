@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:41:23 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/08 18:55:28 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/10 21:22:25 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct stack{
 	int		num;
 	long	index;
 	long	position;
+	bool	move;
+	bool	up_median;
+	struct stack *target;
 	struct stack *next;
 	struct stack *prev;
 } stack;
@@ -73,14 +76,25 @@ void	pb(stack **a, stack **b);
 // Sorting
 
 void	tiny_sort(stack **a);
+void	big_sort(stack **a, stack **b);
 
 // Utils
 void	ft_append_node(stack **stk, stack **new);
 int		ft_strcmp(char *str, char *cmp);
 stack	*ft_find_last_node(stack **stk);
 long	ft_stack_len(stack *stk);
-void	ft_free_stack(stack *stk);
 bool	ft_sorted(stack *stk);
+
+//	Big sort utils
+
+void	ft_push_until_tiny(stack **a, stack **b);
+void	ft_return_a(stack **a, stack **b);
+void	rotate_until_sort(stack **a);
+stack	*ft_find_smallest(stack *stk);
+
+// Free
+
+void	ft_free_stack(stack *stk);
 char	**ft_freemem(char **str, int i);
 void	ft_free_arr(char **str);
 

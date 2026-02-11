@@ -6,11 +6,28 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 20:00:42 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/06 23:08:48 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/10 22:07:14 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_append_node(stack **stk, stack **new)
+{
+	(*new)->prev = NULL;
+	if(*stk == NULL)
+	{
+		*stk = *new;
+		(*stk)->next = NULL;
+	}
+	else
+	{
+		(*new)->prev = NULL;
+		(*new)->next = *stk;
+		(*stk)->prev = *new;
+		*stk = *new;
+	}
+}
 
 void	push(stack **src, stack **dest)
 {
