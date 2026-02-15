@@ -6,7 +6,7 @@
 #    By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/16 13:47:28 by paapahid          #+#    #+#              #
-#    Updated: 2026/02/10 20:31:50 by paapahid         ###   ########.fr        #
+#    Updated: 2026/02/15 16:00:14 by paapahid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,10 @@ SRC = push_swap.c \
 	tiny_sort.c \
 	big_sort.c \
 	utils_array.c \
-	utils_stack.c
+	utils_stack.c \
+	utils_big_sort.c \
+	utils_find.c \
+	utils_set.c
 
 OBJ = $(SRC:.c=.o)
 

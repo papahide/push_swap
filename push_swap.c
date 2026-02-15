@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 12:24:31 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/10 21:13:56 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/15 17:20:48 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char *argv[])
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	ft_create_stack(&a, argv, argc == 2);
+	ft_set_index(&a);
 	argv = NULL;
 	if (!ft_sorted(a))
 	{

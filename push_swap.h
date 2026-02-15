@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:41:23 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/10 21:22:25 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/15 15:55:03 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct stack{
 	int		num;
 	long	index;
 	long	position;
+	int		price;
 	bool	move;
 	bool	up_median;
 	struct stack *target;
@@ -81,16 +82,26 @@ void	big_sort(stack **a, stack **b);
 // Utils
 void	ft_append_node(stack **stk, stack **new);
 int		ft_strcmp(char *str, char *cmp);
-stack	*ft_find_last_node(stack **stk);
 long	ft_stack_len(stack *stk);
 bool	ft_sorted(stack *stk);
 
 //	Big sort utils
 
-void	ft_push_until_tiny(stack **a, stack **b);
-void	ft_return_a(stack **a, stack **b);
-void	rotate_until_sort(stack **a);
+void	ft_set_price(stack **stk, stack **target);
+void	ft_move_cheapest(stack **stk, stack **target);
+
+// Utils_set
+
+void	ft_set_positions(stack **stk);
+void	ft_set_index(stack **stk);
+void	ft_set_target_node(stack **stk, stack **target_stk);
+
+// Utils_find
+
 stack	*ft_find_smallest(stack *stk);
+stack	*find_hi(stack *stk);
+long	ft_find_bigger(stack **stk);
+stack	*ft_find_last_node(stack **stk);
 
 // Free
 

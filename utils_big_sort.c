@@ -6,79 +6,105 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:16:35 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/11 23:17:31 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/15 15:46:51 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_default_index(stack **stk)
+static long	ft_get_cost(stack *stk, long len)
+{
+	long	cost;
+
+	cost = 0;
+	if (stk->up_median)
+		cost = stk->position;
+	else
+		cost = len - stk->position;
+	return (cost);
+}
+
+void	ft_set_price(stack **stk, stack **target)
 {
 	stack	*temp;
+	long	len_a;
+	long	len_b;
+	long	cost_a;
+	long	cost_b;
 
 	temp = *stk;
+	len_a = ft_stack_len(*stk);
+	len_b = ft_stack_len(*target);
 	while (temp != NULL)
 	{
-		temp->index = -1;
+		cost_a = ft_get_cost(temp, len_a);
+		cost_b = ft_get_cost(temp->target, len_b);
+		if (temp->up_median == temp->target->up_median && cost_a < cost_b)
+			temp->price = cost_b;
+		else if (temp->up_median == temp->target->up_median)
+			temp->price = cost_a;
+		else
+			temp->price = cost_a + cost_b;
 		temp = temp->next;
 	}
 }
 
-void	ft_set_index(stack **stk)
+static void	ft_get_cheapest(stack **a, stack **b, stack *cheapest)
 {
-	stack	*temp;
-	stack	*smallest;
-	long	max_index;
-	long	i;
-
-	i = 0;
-	ft_default_index(stk);
-	max_index = ft_stack_len(*stk) - 1;
-	while (i <= max_index)
+	while (*a != cheapest)
 	{
-		temp = *stk;
-		smallest = *stk;
-		while (smallest && smallest->index != -1)
-			smallest = smallest->next;
-		while (temp)
-		{
-			if ((smallest->num > temp->num) && temp->index == -1)
-				smallest = temp;
-			temp = temp->next;
-		}
-		if (smallest)
-			smallest->index = i;
-		i++;
+		if (cheapest->up_median)
+			ra(a);
+		else
+			rra(a);
+	}
+	while (*b != cheapest->target)
+	{
+		if (cheapest->target->up_median)
+			rb(b);
+		else
+			rrb(b);
 	}
 }
 
-void	ft_set_target_node(stack **stk, stack **target_stk)
+static stack	*ft_set_cheapest(stack *stk)
 {
 	stack	*temp;
-	stack	*iterate;
+	stack	*move;
 
-	iterate = *target_stk;
-	temp = *stk;
+	temp = stk;
+	move = stk;
 	while (temp != NULL)
 	{
-		iterate = *target_stk;
-		temp->target = NULL;
-		while (iterate != NULL)
-		{
-			if (!temp->target && iterate->index > temp->index)
-				temp->target = iterate;
-			else if (iterate->index > temp->index 
-				&& iterate->index < temp->target->index)
-				temp->target = iterate;
-			iterate = iterate->next;
-		}
-		if (!temp->target)
-			temp->target = ft_find_smallest(*target_stk);
+		temp->move = false;
 		temp = temp->next;
 	}
+	temp = stk;
+	while (temp != NULL)
+	{
+		if (temp->price < move->price)
+			move = temp;
+		temp = temp->next;
+	}
+	move->move = true;
+	return(move);
 }
 
-void	ft_return_a(stack **a, stack **b)
+void	ft_move_cheapest(stack **stk, stack **target)
 {
-	
+	stack	*cheapest;
+
+	cheapest = ft_set_cheapest(*stk);
+	if (cheapest->up_median && cheapest->target->up_median)
+	{
+		while (*stk != cheapest && *target != cheapest->target)
+			rr(stk, target);
+	}
+	else if (!cheapest->up_median && !cheapest->target->up_median)
+	{
+		while (*stk != cheapest && *target != cheapest->target)
+			rrr(stk, target);
+	}
+	if (*stk != cheapest || *target != cheapest->target)
+		ft_get_cheapest(stk, target, cheapest);
 }
