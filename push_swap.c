@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 12:24:31 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/15 17:20:48 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/17 01:13:09 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	main(int argc, char *argv[])
 		else
 			big_sort(&a, &b);
 	}
+	// if (ft_sorted(a))
+	// 	printf("Sorted!!");
 	ft_free_stack(a);
 	a = NULL;
 	return(0);

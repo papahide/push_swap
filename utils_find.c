@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 15:26:52 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/15 18:55:01 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/17 22:37:35 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ stack	*ft_find_smallest(stack *stk)
 	stack	*smallest;
 
 	smallest = stk;
-	while (stk->next != NULL)
+	while (stk != NULL)
 	{
 		if (stk->num < smallest->num)
 			smallest = stk;
@@ -26,7 +26,7 @@ stack	*ft_find_smallest(stack *stk)
 	return(smallest);
 }
 
-stack	*find_hi(stack *stk)
+stack	*ft_find_hi(stack *stk)
 {
 	stack *biggest;
 
@@ -40,27 +40,6 @@ stack	*find_hi(stack *stk)
 	return (biggest);
 }
 
-long	ft_find_bigger(stack **stk)
-{
-	long	max_pos;
-	long	max_num;
-	stack	*aux;
-
-	aux = *stk;
-	max_pos = aux->position;
-	max_num = aux->num;
-	while (aux != NULL)
-	{
-		if(aux->num > max_num)
-		{
-			max_pos = aux->position;
-			max_num = aux->num;
-		}
-		aux = aux->next;
-	}
-	return(max_pos);
-}
-
 stack	*ft_find_last_node(stack **stk)
 {
 	stack *last;
@@ -68,4 +47,42 @@ stack	*ft_find_last_node(stack **stk)
 	while (last->next != NULL)
 		last = last->next;
 	return(last);
+}
+
+stack	*ft_find_bigger_smallest(stack *node, stack **target)
+{
+	stack	*temp;
+	stack	*best;
+
+	temp = *target;
+	best = NULL;
+	while (temp != NULL)
+	{
+		if (temp->num < node->num)
+		{
+			if (best == NULL || temp->num > best->num)
+				best = temp;
+		}
+		temp = temp->next;
+	}
+	return (best);
+}
+
+stack	*ft_find_smallest_bigger(stack *node, stack **target)
+{
+	stack	*temp;
+	stack	*best;
+
+	temp = *target;
+	best = NULL;
+	while (temp != NULL)
+	{
+		if (temp->num > node->num)
+		{
+			if (best == NULL || temp->num < best->num)
+				best = temp;
+		}
+		temp = temp->next;
+	}
+	return (best);
 }

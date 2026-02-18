@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:41:23 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/15 15:55:03 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/17 22:37:42 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,15 @@ void	ft_move_cheapest(stack **stk, stack **target);
 void	ft_set_positions(stack **stk);
 void	ft_set_index(stack **stk);
 void	ft_set_target_node(stack **stk, stack **target_stk);
+void	ft_set_target_back(stack **stk, stack **target_stk);
 
 // Utils_find
 
 stack	*ft_find_smallest(stack *stk);
-stack	*find_hi(stack *stk);
-long	ft_find_bigger(stack **stk);
+stack	*ft_find_hi(stack *stk);
 stack	*ft_find_last_node(stack **stk);
+stack	*ft_find_bigger_smallest(stack *node, stack **target);
+stack	*ft_find_smallest_bigger(stack *node, stack **target);
 
 // Free
 

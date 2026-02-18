@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 15:28:51 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/15 18:42:53 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/17 22:37:26 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,28 +66,40 @@ void	ft_set_index(stack **stk)
 	}
 }
 
-void	ft_set_target_node(stack **stk, stack **target_stk)
+void	ft_set_target_node(stack **stk, stack **target)
 {
 	stack	*temp;
-	stack	*iterate;
+	stack	*biggest;
+	stack	*smallest;
 
-	iterate = *target_stk;
 	temp = *stk;
-	while (temp != NULL)
+	while (temp)
 	{
-		iterate = *target_stk;
-		temp->target = NULL;
-		while (iterate != NULL)
-		{
-			if (!temp->target && iterate->index > temp->index)
-				temp->target = iterate;
-			else if (iterate->index > temp->index 
-				&& iterate->index < temp->target->index)
-				temp->target = iterate;
-			iterate = iterate->next;
-		}
-		if (!temp->target)
-			temp->target = ft_find_smallest(*target_stk);
+		biggest = ft_find_hi(*target);
+		smallest = ft_find_smallest(*target);
+		if (temp->num > biggest->num || temp->num < smallest->num)
+			temp->target = biggest;
+		else
+			temp->target = ft_find_bigger_smallest(temp, target);
+		temp = temp->next;
+	}
+}
+
+void	ft_set_target_back(stack **stk, stack **target)
+{
+	stack	*temp;
+	stack	*biggest;
+	stack	*smallest;
+
+	temp = *stk;
+	while (temp)
+	{
+		biggest = ft_find_hi(*target);
+		smallest = ft_find_smallest(*target);
+		if (temp->num > biggest->num || temp->num < smallest->num)
+			temp->target = smallest;
+		else
+			temp->target = ft_find_smallest_bigger(temp, target);
 		temp = temp->next;
 	}
 }

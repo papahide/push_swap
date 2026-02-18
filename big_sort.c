@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 20:46:56 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/15 19:17:16 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/17 23:10:19 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	ft_set_median(stack **stk)
 
 static void	ft_push_until_tiny(stack **stk, stack **target)
 {
-	while (ft_stack_len(*stk) > 3)
+	while (ft_stack_len(*stk) > 3 && !ft_sorted(*stk))
 	{
 		ft_set_positions(stk);
 		ft_set_positions(target);
@@ -44,17 +44,27 @@ static void	ft_push_until_tiny(stack **stk, stack **target)
 	}
 }
 
+void ft_rotate_until_target(stack **stk, stack *t_node)
+{
+	if (t_node->up_median)
+		while ((*stk) != t_node)
+			ra(stk);
+	else
+		while ((*stk) != t_node)
+			rra(stk);
+}
+
 static void	ft_return(stack **stk, stack **target)
 {
 	while (*stk != NULL)
 	{
 		ft_set_positions(stk);
 		ft_set_positions(target);
-		ft_set_target_node(stk, target);
+		ft_set_target_back(stk, target);
 		if ((*target) == (*stk)->target)
 			pa(target, stk);
 		else
-			ra(target);
+			ft_rotate_until_target(target, (*stk)->target);
 	}
 }
 
@@ -81,13 +91,15 @@ void	big_sort(stack **a, stack **b)
 		return ;
 	pb(a, b);
 	pb(a, b);
-	if ((*b)->num < (*b)->next->num)
-		sb(b);
 	len = ft_stack_len(*a);
 	if (len > 3 && !ft_sorted(*a))
 		ft_push_until_tiny(a, b);
 	if (ft_stack_len(*a) == 3 && !ft_sorted(*a))
+	{
 		tiny_sort(a);
+		if ((*b)->index < (*b)->next->index)
+			sb(b);
+	}
 	else if (ft_stack_len(*a) < 3 && !ft_sorted(*a))
 		sa(a);
 	ft_return(b, a);

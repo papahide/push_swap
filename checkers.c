@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:09:59 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/07 03:15:36 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/15 20:38:13 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ static bool	ft_strcheck(char *str)
 			check = false;
 			break;
 		}
-		if (i == 0 && ((str[i] == '-' || str[i] == '+') 
+		if ((i == 0 && ((str[i] == '-' || str[i] == '+') 
 			&& !(str[i + 1] >= '0' && str[i + 1] <= '9')))
+			|| (i > 0 && !(str[i] >= '0' && str[i] <= '9')))
 		{
 			check = false;
 			break;

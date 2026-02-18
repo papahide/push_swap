@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:16:35 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/15 15:46:51 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/16 20:37:47 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,6 @@ void	ft_set_price(stack **stk, stack **target)
 	}
 }
 
-static void	ft_get_cheapest(stack **a, stack **b, stack *cheapest)
-{
-	while (*a != cheapest)
-	{
-		if (cheapest->up_median)
-			ra(a);
-		else
-			rra(a);
-	}
-	while (*b != cheapest->target)
-	{
-		if (cheapest->target->up_median)
-			rb(b);
-		else
-			rrb(b);
-	}
-}
-
 static stack	*ft_set_cheapest(stack *stk)
 {
 	stack	*temp;
@@ -88,6 +70,24 @@ static stack	*ft_set_cheapest(stack *stk)
 	}
 	move->move = true;
 	return(move);
+}
+
+static void	ft_get_cheapest(stack **a, stack **b, stack *cheapest)
+{
+	while (*a != cheapest)
+	{
+		if (cheapest->up_median)
+			ra(a);
+		else
+			rra(a);
+	}
+	while (*b != cheapest->target)
+	{
+		if (cheapest->target->up_median)
+			rb(b);
+		else
+			rrb(b);
+	}
 }
 
 void	ft_move_cheapest(stack **stk, stack **target)

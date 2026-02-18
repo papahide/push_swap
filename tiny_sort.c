@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 22:16:46 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/10 22:05:37 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/16 22:12:20 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	tiny_sort(stack **stk)
 {
 	stack	*bigger;
 
-	bigger = find_hi(*stk);
+	bigger = ft_find_hi(*stk);
 	if (*stk == bigger)
 		ra(stk);
 	else if ((*stk)->next == bigger)
