@@ -6,16 +6,16 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 15:26:07 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/06 23:08:27 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/20 23:37:55 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_two_nodes(stack **stk)
+void	swap_two_nodes(t_stack **stk)
 {
-	stack	*temp;
-	
+	t_stack	*temp;
+
 	temp = *stk;
 	(*stk) = (*stk)->next;
 	temp->prev = (*stk);
@@ -24,9 +24,9 @@ void	swap_two_nodes(stack **stk)
 	(*stk)->prev = NULL;
 }
 
-void	swap(stack **stk)
+void	swap(t_stack **stk)
 {
-	stack *temp;
+	t_stack	*temp;
 
 	if ((*stk)->next->next == NULL)
 		swap_two_nodes(stk);
@@ -42,19 +42,19 @@ void	swap(stack **stk)
 	}
 }
 
-void	sa(stack **a)
+void	sa(t_stack **a)
 {
 	swap(a);
 	write(1, "sa\n", 3);
 }
 
-void	sb(stack **b)
+void	sb(t_stack **b)
 {
 	swap(b);
 	write(1, "sb\n", 3);
 }
 
-void	ss(stack **a, stack **b)
+void	ss(t_stack **a, t_stack **b)
 {
 	swap(a);
 	swap(b);

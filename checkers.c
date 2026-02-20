@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:09:59 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/15 20:38:13 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/20 23:25:43 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 static bool	ft_strcheck(char *str)
 {
 	bool	check;
-	int i;
-	
+	int		i;
+
 	i = 0;
 	check = true;
 	while (str[i])
 	{
-		if (!((str[i] >= '0' && str[i] <= '9') 
-			|| (str[i] == '-' || str[i] == '+')))
+		if (!((str[i] >= '0' && str[i] <= '9')
+				|| (str[i] == '-' || str[i] == '+')))
 		{
 			check = false;
-			break;
+			break ;
 		}
-		if ((i == 0 && ((str[i] == '-' || str[i] == '+') 
-			&& !(str[i + 1] >= '0' && str[i + 1] <= '9')))
+		if ((i == 0 && ((str[i] == '-' || str[i] == '+')
+					&& !(str[i + 1] >= '0' && str[i + 1] <= '9')))
 			|| (i > 0 && !(str[i] >= '0' && str[i] <= '9')))
 		{
 			check = false;
-			break;
+			break ;
 		}
 		i++;
 	}
-	return(check);
+	return (check);
 }
 
 static bool	ft_unique(char **argv, char *str, int index)
@@ -51,27 +51,26 @@ static bool	ft_unique(char **argv, char *str, int index)
 	{
 		num = ft_atol(argv[i]);
 		if (num > 2147483647 || num < -2147483648)
-			return(false);
+			return (false);
 		if (i < index && to_compare == num)
-			return(false);
+			return (false);
 		i++;
 	}
-	return(true);
+	return (true);
 }
 
 bool	ft_numcheck(char **argv)
 {
 	bool	check;
-	
-	check = false;
-	int i;
+	int		i;
 
 	i = 0;
+	check = false;
 	while (argv[i])
 	{
 		check = ft_strcheck(argv[i]);
 		if (check == false)
-			return(check);
+			return (check);
 		i++;
 	}
 	i = 0;
@@ -79,8 +78,8 @@ bool	ft_numcheck(char **argv)
 	{
 		check = ft_unique(argv, argv[i], i);
 		if (check == false)
-			return(check);
+			return (check);
 		i++;
 	}
-	return(check);
+	return (check);
 }

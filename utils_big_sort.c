@@ -6,13 +6,13 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:16:35 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/16 20:37:47 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/20 23:35:26 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static long	ft_get_cost(stack *stk, long len)
+static long	ft_get_cost(t_stack *stk, long len)
 {
 	long	cost;
 
@@ -24,9 +24,9 @@ static long	ft_get_cost(stack *stk, long len)
 	return (cost);
 }
 
-void	ft_set_price(stack **stk, stack **target)
+void	ft_set_price(t_stack **stk, t_stack **target)
 {
-	stack	*temp;
+	t_stack	*temp;
 	long	len_a;
 	long	len_b;
 	long	cost_a;
@@ -49,10 +49,10 @@ void	ft_set_price(stack **stk, stack **target)
 	}
 }
 
-static stack	*ft_set_cheapest(stack *stk)
+static t_stack	*ft_set_cheapest(t_stack *stk)
 {
-	stack	*temp;
-	stack	*move;
+	t_stack	*temp;
+	t_stack	*move;
 
 	temp = stk;
 	move = stk;
@@ -69,10 +69,10 @@ static stack	*ft_set_cheapest(stack *stk)
 		temp = temp->next;
 	}
 	move->move = true;
-	return(move);
+	return (move);
 }
 
-static void	ft_get_cheapest(stack **a, stack **b, stack *cheapest)
+static void	ft_get_cheapest(t_stack **a, t_stack **b, t_stack *cheapest)
 {
 	while (*a != cheapest)
 	{
@@ -90,9 +90,9 @@ static void	ft_get_cheapest(stack **a, stack **b, stack *cheapest)
 	}
 }
 
-void	ft_move_cheapest(stack **stk, stack **target)
+void	ft_move_cheapest(t_stack **stk, t_stack **target)
 {
-	stack	*cheapest;
+	t_stack	*cheapest;
 
 	cheapest = ft_set_cheapest(*stk);
 	if (cheapest->up_median && cheapest->target->up_median)

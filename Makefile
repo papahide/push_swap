@@ -6,13 +6,13 @@
 #    By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/16 13:47:28 by paapahid          #+#    #+#              #
-#    Updated: 2026/02/15 16:00:14 by paapahid         ###   ########.fr        #
+#    Updated: 2026/02/20 23:39:44 by paapahid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 CC = cc
 

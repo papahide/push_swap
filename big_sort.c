@@ -6,30 +6,13 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 20:46:56 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/17 23:10:19 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/20 23:38:33 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_set_median(stack **stk)
-{
-	stack	*temp;
-	long	stack_len;
-
-	temp = *stk;
-	stack_len = ft_stack_len(*stk);
-	while (temp != NULL)
-	{
-		if (temp->position <= (stack_len / 2))
-			temp->up_median = true;
-		else
-			temp->up_median = false;
-		temp = temp->next;
-	}
-}
-
-static void	ft_push_until_tiny(stack **stk, stack **target)
+static void	ft_push_until_tiny(t_stack **stk, t_stack **target)
 {
 	while (ft_stack_len(*stk) > 3 && !ft_sorted(*stk))
 	{
@@ -44,17 +27,17 @@ static void	ft_push_until_tiny(stack **stk, stack **target)
 	}
 }
 
-void ft_rotate_until_target(stack **stk, stack *t_node)
+void	ft_rotate_until_target(t_stack **stk, t_stack *node)
 {
-	if (t_node->up_median)
-		while ((*stk) != t_node)
+	if (node->up_median)
+		while ((*stk) != node)
 			ra(stk);
 	else
-		while ((*stk) != t_node)
+		while ((*stk) != node)
 			rra(stk);
 }
 
-static void	ft_return(stack **stk, stack **target)
+static void	ft_return(t_stack **stk, t_stack **target)
 {
 	while (*stk != NULL)
 	{
@@ -68,9 +51,9 @@ static void	ft_return(stack **stk, stack **target)
 	}
 }
 
-static void	rotate_until_sort(stack **stk)
+static void	rotate_until_sort(t_stack **stk)
 {
-	stack	*smallest;
+	t_stack	*smallest;
 
 	smallest = ft_find_smallest(*stk);
 	ft_set_median(stk);
@@ -83,7 +66,7 @@ static void	rotate_until_sort(stack **stk)
 	}
 }
 
-void	big_sort(stack **a, stack **b)
+void	big_sort(t_stack **a, t_stack **b)
 {
 	long	len;
 

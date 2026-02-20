@@ -6,61 +6,62 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 15:26:52 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/17 22:37:35 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/20 23:28:28 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-stack	*ft_find_smallest(stack *stk)
+t_stack	*ft_find_smallest(t_stack *stk)
 {
-	stack	*smallest;
+	t_stack	*smallest;
 
 	smallest = stk;
 	while (stk != NULL)
 	{
-		if (stk->num < smallest->num)
+		if (stk->index < smallest->index)
 			smallest = stk;
 		stk = stk->next;
 	}
-	return(smallest);
+	return (smallest);
 }
 
-stack	*ft_find_hi(stack *stk)
+t_stack	*ft_find_hi(t_stack *stk)
 {
-	stack *biggest;
+	t_stack	*biggest;
 
 	biggest = stk;
 	while (stk != NULL)
 	{
-		if (stk->num > biggest->num)
+		if (stk->index > biggest->index)
 			biggest = stk;
 		stk = stk->next;
 	}
 	return (biggest);
 }
 
-stack	*ft_find_last_node(stack **stk)
+t_stack	*ft_find_last_node(t_stack **stk)
 {
-	stack *last;
+	t_stack	*last;
+
 	last = *stk;
 	while (last->next != NULL)
 		last = last->next;
-	return(last);
+	return (last);
 }
 
-stack	*ft_find_bigger_smallest(stack *node, stack **target)
+t_stack	*ft_find_bigger_smallest(t_stack *node, t_stack **target)
 {
-	stack	*temp;
-	stack	*best;
+	t_stack	*temp;
+	t_stack	*best;
 
 	temp = *target;
 	best = NULL;
 	while (temp != NULL)
 	{
-		if (temp->num < node->num)
+		if (temp->index < node->index)
 		{
-			if (best == NULL || temp->num > best->num)
+			if (best == NULL || temp->index > best->index)
 				best = temp;
 		}
 		temp = temp->next;
@@ -68,18 +69,18 @@ stack	*ft_find_bigger_smallest(stack *node, stack **target)
 	return (best);
 }
 
-stack	*ft_find_smallest_bigger(stack *node, stack **target)
+t_stack	*ft_find_smallest_bigger(t_stack *node, t_stack **target)
 {
-	stack	*temp;
-	stack	*best;
+	t_stack	*temp;
+	t_stack	*best;
 
 	temp = *target;
 	best = NULL;
 	while (temp != NULL)
 	{
-		if (temp->num > node->num)
+		if (temp->index > node->index)
 		{
-			if (best == NULL || temp->num < best->num)
+			if (best == NULL || temp->index < best->index)
 				best = temp;
 		}
 		temp = temp->next;

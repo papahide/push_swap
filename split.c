@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 13:33:46 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/07 03:49:20 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/20 23:28:52 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_numcount(char *str, char separator)
 {
-	int count;
-	bool in_num;
-	int i;
+	int		count;
+	bool	in_num;
+	int		i;
 
 	i = 0;
 	count = 0;
@@ -36,7 +36,7 @@ int	ft_numcount(char *str, char separator)
 			i++;
 		}
 	}
-	return(count);
+	return (count);
 }
 
 int	ft_numlen(char *str, char separator)
@@ -46,14 +46,14 @@ int	ft_numlen(char *str, char separator)
 	i = 0;
 	while (str[i] && str[i] != separator)
 		i++;
-	return(i);
+	return (i);
 }
 
-char *ft_substr(char *str, int start, int len)
+char	*ft_substr(char *str, int start, int len)
 {
-	int i;
-	char *sub;
-	
+	int		i;
+	char	*sub;
+
 	i = 0;
 	sub = malloc((len + 1) * sizeof(char));
 	if (!sub)
@@ -68,7 +68,7 @@ char *ft_substr(char *str, int start, int len)
 	return (sub);
 }
 
-char **ft_split(char *numstr, char separator)
+char	**ft_split(char *numstr, char separator)
 {
 	char	**nums;
 	int		nbrcount;
@@ -82,7 +82,7 @@ char **ft_split(char *numstr, char separator)
 	nums = malloc((nbrcount + 2) * (sizeof(char *)));
 	nums[0] = ft_substr("./push_swap", 0, 11);
 	if (!nums)
-		return(NULL);
+		return (NULL);
 	while (++i <= nbrcount)
 	{
 		while (numstr[j] && numstr[j] == separator)
@@ -90,9 +90,9 @@ char **ft_split(char *numstr, char separator)
 		numlen = ft_numlen(&numstr[j], separator);
 		nums[i] = ft_substr(&numstr[j], 0, numlen);
 		if (!nums[i])
-			return(ft_freemem(nums, i));
+			return (ft_freemem(nums, i));
 		j = j + numlen;
 	}
 	nums[i] = NULL;
-	return(nums);
+	return (nums);
 }

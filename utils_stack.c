@@ -6,28 +6,28 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 23:13:31 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/15 15:28:35 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/20 23:38:45 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	ft_sorted(stack *stk)
+bool	ft_sorted(t_stack *stk)
 {
 	if (stk == NULL)
-		return(true);
+		return (true);
 	while (stk->next != NULL)
 	{
 		if (stk->num > stk->next->num)
-			return(false);
+			return (false);
 		stk = stk->next;
 	}
-	return(true);
+	return (true);
 }
 
-void	ft_free_stack(stack *stk)
+void	ft_free_stack(t_stack *stk)
 {
-	stack	*temp;
+	t_stack	*temp;
 
 	while (stk != NULL)
 	{
@@ -38,17 +38,34 @@ void	ft_free_stack(stack *stk)
 	}
 }
 
-long	ft_stack_len(stack *stk)
+long	ft_stack_len(t_stack *stk)
 {
 	long	nodes;
 
 	nodes = 0;
 	if (stk == NULL)
-		return(nodes);
+		return (nodes);
 	while (stk != NULL)
 	{
 		stk = stk->next;
 		nodes++;
 	}
-	return(nodes);
+	return (nodes);
+}
+
+void	ft_set_median(t_stack **stk)
+{
+	t_stack	*temp;
+	long	t_stack_len;
+
+	temp = *stk;
+	t_stack_len = ft_stack_len(*stk);
+	while (temp != NULL)
+	{
+		if (temp->position <= (t_stack_len / 2))
+			temp->up_median = true;
+		else
+			temp->up_median = false;
+		temp = temp->next;
+	}
 }

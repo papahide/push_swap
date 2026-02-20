@@ -6,18 +6,18 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 17:59:15 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/08 18:55:53 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/20 23:23:57 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_new_node(stack **stk, int number, int position)
+void	ft_new_node(t_stack **stk, int number, int position)
 {
-	stack	*new;
-	stack	*temp;
+	t_stack	*new;
+	t_stack	*temp;
 
-	new = malloc(sizeof(stack));
+	new = malloc(sizeof(t_stack));
 	if (new == NULL)
 		return ;
 	new->num = number;
@@ -38,7 +38,7 @@ void	ft_new_node(stack **stk, int number, int position)
 	}
 }
 
-void ft_create_stack(stack **stk, char *argv[], bool split)
+void	ft_create_stack(t_stack **stk, char *argv[], bool split)
 {
 	bool	check;
 	int		num;

@@ -6,15 +6,15 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 22:14:25 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/09 21:00:45 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/20 23:36:50 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotate(stack **stk)
+void	reverse_rotate(t_stack **stk)
 {
-	stack	*first_node;
+	t_stack	*first_node;
 
 	first_node = *stk;
 	*stk = ft_find_last_node(&first_node);
@@ -24,19 +24,19 @@ void	reverse_rotate(stack **stk)
 	(*stk)->prev = NULL;
 }
 
-void	rra(stack **a)
+void	rra(t_stack **a)
 {
 	reverse_rotate(a);
 	write(1, "rra\n", 4);
 }
 
-void	rrb(stack **b)
+void	rrb(t_stack **b)
 {
 	reverse_rotate(b);
 	write(1, "rrb\n", 4);
 }
 
-void	rrr(stack **a, stack **b)
+void	rrr(t_stack **a, t_stack **b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);

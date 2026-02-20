@@ -6,15 +6,15 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 15:28:51 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/17 22:37:26 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/20 23:37:07 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_set_positions(stack **stk)
+void	ft_set_positions(t_stack **stk)
 {
-	stack	*temp;
+	t_stack	*temp;
 	long	i;
 
 	i = 0;
@@ -26,9 +26,10 @@ void	ft_set_positions(stack **stk)
 		i++;
 	}
 }
-static void	ft_default_index(stack **stk)
+
+static void	ft_default_index(t_stack **stk)
 {
-	stack	*temp;
+	t_stack	*temp;
 
 	temp = *stk;
 	while (temp != NULL)
@@ -38,10 +39,10 @@ static void	ft_default_index(stack **stk)
 	}
 }
 
-void	ft_set_index(stack **stk)
+void	ft_set_index(t_stack **stk)
 {
-	stack	*temp;
-	stack	*smallest;
+	t_stack	*temp;
+	t_stack	*smallest;
 	long	max_index;
 	long	i;
 
@@ -66,11 +67,11 @@ void	ft_set_index(stack **stk)
 	}
 }
 
-void	ft_set_target_node(stack **stk, stack **target)
+void	ft_set_target_node(t_stack **stk, t_stack **target)
 {
-	stack	*temp;
-	stack	*biggest;
-	stack	*smallest;
+	t_stack	*temp;
+	t_stack	*biggest;
+	t_stack	*smallest;
 
 	temp = *stk;
 	while (temp)
@@ -85,11 +86,11 @@ void	ft_set_target_node(stack **stk, stack **target)
 	}
 }
 
-void	ft_set_target_back(stack **stk, stack **target)
+void	ft_set_target_back(t_stack **stk, t_stack **target)
 {
-	stack	*temp;
-	stack	*biggest;
-	stack	*smallest;
+	t_stack	*temp;
+	t_stack	*biggest;
+	t_stack	*smallest;
 
 	temp = *stk;
 	while (temp)
