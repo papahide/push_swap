@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 23:13:31 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/20 23:38:45 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/20 23:53:31 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,16 @@ void	ft_set_median(t_stack **stk)
 		else
 			temp->up_median = false;
 		temp = temp->next;
+	}
+}
+
+void	ft_main_errors(int argc, char *argv[])
+{
+	if (argc == 1)
+		exit(0);
+	if (argc == 2 && !argv[1][0])
+	{
+		write(2, "Error\n", 6);
+		exit(1);
 	}
 }

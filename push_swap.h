@@ -6,7 +6,7 @@
 /*   By: paapahid <paapahid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:41:23 by paapahid          #+#    #+#             */
-/*   Updated: 2026/02/20 23:41:15 by paapahid         ###   ########.fr       */
+/*   Updated: 2026/02/20 23:53:51 by paapahid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int		ft_strcmp(char *str, char *cmp);
 long	ft_stack_len(t_stack *stk);
 bool	ft_sorted(t_stack *stk);
 void	ft_set_median(t_stack **stk);
+void	ft_main_errors(int argc, char *argv[]);
 
 //	Big sort utils
 
